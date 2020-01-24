@@ -1,0 +1,22 @@
+kind: List
+apiVersion: v1
+items:
+- apiVersion: apps/v1beta1
+  kind: Deployment
+  metadata:
+    name: zk-ui
+    namespace: zookeeper-min
+  spec:
+    replicas: 1
+    template:
+      metadata:
+        name: zk-ui
+        labels:
+          app: zk-ui
+      spec:
+        containers:
+        - image: zk-ui:2.0-SNAPSHOT
+          name: zk-ui
+          ports:
+          - name: http
+            containerPort: 9090
